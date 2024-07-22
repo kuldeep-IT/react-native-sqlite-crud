@@ -5,6 +5,7 @@ import Toast from 'react-native-toast-message';
 import { COLORS, FONTSIZE, SPACING } from '../theme/theme';
 import SQLite from 'react-native-sqlite-storage';
 import { addUser, createTable } from '../database/crud';
+import { CommonActions } from '@react-navigation/native';
 
 
 const SignupScreen = ({ navigation }) => {
@@ -76,7 +77,13 @@ const SignupScreen = ({ navigation }) => {
                             position: 'bottom',
                         });
 
-                        // navigation.push('Home');
+                        navigation.dispatch(
+                            CommonActions.reset({
+                                index: 0,
+                                routes: [{ name: 'Tab' }],
+                            })
+                        );
+
                         console.log('User signed up and profile updated!', updatedUser);
                     } catch (error) {
                         Toast.show({
@@ -113,7 +120,7 @@ const SignupScreen = ({ navigation }) => {
     };
     return (
         <View style={styles.container}>
-            <Toast />
+            {/* <Toast /> */}
             <Text style={styles.titleHeading}>Signup</Text>
             <TextInput
                 style={styles.inputHeader}

@@ -5,6 +5,7 @@ export const SPACING = {
     space_8: 8,
     space_10: 10,
     space_12: 12,
+    space_14: 14,
     space_15: 15,
     space_16: 16,
     space_18: 18,
