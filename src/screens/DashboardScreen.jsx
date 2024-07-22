@@ -6,13 +6,21 @@ import { COLORS, SPACING } from '../theme/theme';
 import CommonHeader from '../components/CommonHeader';
 import db from '../database/db';
 import { Text } from 'react-native-svg';
+import { firebase } from '../firebase/config';
 
 const DashboardScreen = () => {
     const screenWidth = Dimensions.get('window').width;
     const [chartData, setChartData] = useState(null);
 
     useEffect(() => {
-        const fetchUserCreationData = () => {
+        const fetchUserCreationData = async () => {
+            const currentUser = firebase.auth().currentUser;
+            let currentUserCreationDate = null;
+
+            if (currentUser) {
+                currentUserCreationDate = new Date(currentUser.metadata.creationTime);
+            }
+
             db.transaction(tx => {
                 tx.executeSql(
                     'SELECT DateCreated FROM Users;',
@@ -22,6 +30,10 @@ const DashboardScreen = () => {
                         let dates = [];
                         for (let i = 0; i < rows.length; i++) {
                             dates.push(new Date(rows.item(i).DateCreated));
+                        }
+
+                        if (currentUserCreationDate) {
+                            dates.push(currentUserCreationDate);
                         }
 
                         // Process data to get the number of users created each month

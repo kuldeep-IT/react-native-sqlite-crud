@@ -119,7 +119,6 @@ const ProfileScreen = () => {
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
             </View>
-            <Toast />
         </>
     );
 }
