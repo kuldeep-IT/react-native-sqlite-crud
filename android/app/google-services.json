@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "839641756424",
+    "project_id": "jaihoreactnative",
+    "storage_bucket": "jaihoreactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839641756424:android:4750261fd574bbb9ddb2bd",
+        "android_client_info": {
+          "package_name": "com.jaihoreactnative"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIbpNAA_t2daZxjCYohxcdZ6cVDOgkJNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
