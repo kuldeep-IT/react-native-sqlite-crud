@@ -3,7 +3,7 @@ import db from './db';
 export const createTable = () => {
     db.transaction(tx => {
         tx.executeSql(
-            'CREATE TABLE IF NOT EXISTS Users (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Email TEXT, Password TEXT);',
+            'CREATE TABLE IF NOT EXISTS Users (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Email TEXT, Password TEXT, DateCreated TEXT);',
             [],
             () => {
                 console.log('Table created successfully');
@@ -28,10 +28,11 @@ export const createTable = () => {
 
 export const addUser = (name, email, password) => {
     return new Promise((resolve, reject) => {
+        const dateCreated = new Date().toISOString(); // Current date and time in ISO format
         db.transaction(tx => {
             tx.executeSql(
-                'INSERT INTO Users (Name, Email, Password) VALUES (?, ?, ?);',
-                [name, email, password],
+                'INSERT INTO Users (Name, Email, Password, DateCreated) VALUES (?, ?, ?, ?);',
+                [name, email, password, dateCreated],
                 (tx, results) => {
                     if (results.rowsAffected > 0) {
                         resolve(true);

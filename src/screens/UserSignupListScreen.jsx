@@ -16,6 +16,8 @@ const UserSignupListScreen = () => {
         fetchUsers();
     }, []);
 
+    console.log(users)
+
     const renderItem = ({ item }) => (
         <View style={styles.userItem}>
             <Text style={styles.itemName}>{item.Name}</Text>
